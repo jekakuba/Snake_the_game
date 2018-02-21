@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Basics">
+      <UniqueIdentifier>{edf584a4-6b4d-4932-8229-2bf513e46dce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basics\Point">
+      <UniqueIdentifier>{d0e6e8db-4240-4034-b3d2-d17578e62280}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basics\Direction">
+      <UniqueIdentifier>{afa7fe8f-b515-44dc-8e15-5e5068a9afac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Basics\RandomGenerator">
+      <UniqueIdentifier>{20d3ddfc-b6a3-454e-b2f2-7ccdbc53cc36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="GameObjects\Snake">
+      <UniqueIdentifier>{2e6195cc-da22-438d-8aaf-9bef0e1885d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\MapObject">
+      <UniqueIdentifier>{6b5acb84-a9f9-4953-a42b-6419dddbacc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Food">
+      <UniqueIdentifier>{d8033544-f240-4208-bdb5-b6659da71dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entry_point">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="GameObjects\Wall">
+      <UniqueIdentifier>{5e99cbf5-f95e-4f38-a9b9-426425934199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{e69db2d4-b052-4dcc-9128-581b074df30d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Point.cpp">
+      <Filter>Basics\Point</Filter>
+    </ClCompile>
+    <ClCompile Include="Direction.cpp">
+      <Filter>Basics\Direction</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomGenerator.cpp">
+      <Filter>Basics\RandomGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>GameObjects\Snake</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObject.cpp">
+      <Filter>GameObjects\MapObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>GameObjects\Food</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Entry_point</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>GameObjects\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Basics</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Basics\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Basics\Direction</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomGenerator.h">
+      <Filter>Basics\RandomGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw_config.h">
+      <Filter>Basics</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>GameObjects\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObject.h">
+      <Filter>GameObjects\MapObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>GameObjects\Food</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>GameObjects\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
