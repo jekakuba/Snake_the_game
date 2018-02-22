@@ -40,6 +40,12 @@
     <Filter Include="Modules">
       <UniqueIdentifier>{e69db2d4-b052-4dcc-9128-581b074df30d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects\Portal">
+      <UniqueIdentifier>{07716ce9-9dd5-4fd6-bd1b-4d0fa3104d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Saw">
+      <UniqueIdentifier>{218b9ad0-2a9f-47f5-8ccc-8474c515b940}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Point.cpp">
@@ -68,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>GameObjects\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="Saw.cpp">
+      <Filter>GameObjects\Saw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>GameObjects\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="Saw.h">
+      <Filter>GameObjects\Saw</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

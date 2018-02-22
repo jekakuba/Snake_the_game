@@ -4,7 +4,8 @@
 #include "Snake.h"
 #include "Interfaces.h"
 #include "RandomGenerator.h"
-
+#include "Portal.h"
+#include "Saw.h"
 #include <SFML\System.hpp>
 #include <SFML\Window.hpp>
 #include <memory>
@@ -32,6 +33,8 @@ private:
 	std::unique_ptr<Snake> m_snake;
 	std::unique_ptr<Food> m_food;
 	std::vector<Wall> m_walls;
+	std::vector<Portal> m_portals;
+	Saw m_saw;
 
 	RandomGenerator m_rand;
 	sf::Time m_elapsedTime;

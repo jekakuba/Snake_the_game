@@ -7,7 +7,8 @@ const sf::Time Map::GAME_UPDATE_RATE = sf::milliseconds(_GAME_UPDATE_RATE);
 Map::Map(unsigned width, unsigned height) 
 				  :m_elapsedTime(sf::Time::Zero),
 				   m_width(width),
-				   m_height(height)
+				   m_height(height),
+				   m_saw(Point(10,2), Point(10,10), *this)
 {
 	load();
 
@@ -21,6 +22,13 @@ Map::Map(unsigned width, unsigned height)
 		m_walls.push_back(Wall(Point(m_width - 1, y)));
 	}
 
+	m_portals.push_back(Portal(Point(5, 5)));
+	m_portals.push_back(Portal(Point(m_width - 5, m_height - 5)));
+
+
+
+	m_portals.front().connectWith(m_portals.back());
+	
 	Point mapCenter = Point((m_width - 2) / 2, (m_height - 2) / 2);
 	
 	for (int x = mapCenter.x() - 8; x <= mapCenter.x() + 8; ++x) {
@@ -34,7 +42,7 @@ Map::Map(unsigned width, unsigned height)
 }
 
 void Map::load() {
-	m_snake.reset(new Snake(Point(8, 2), Direction::RIGHT, 5));
+	m_snake.reset(new Snake(Point(8, 2), Direction::RIGHT, 6));
 
 	m_food.reset(new Food);
 	m_food->pos = generateFoodPos();
@@ -56,6 +64,13 @@ void Map::update(sf::Time&& elapsed) {
 		for (auto& wall : m_walls) {
 			m_snake->reactOn(wall);
 		}
+	
+		for(auto& portal : m_portals) {
+			m_snake->reactOn(portal);
+		}
+
+		m_saw.move();
+		m_snake->reactOn(m_saw);
 
 		if (m_snake->reactOn(*m_food)) {
 			m_food->pos = generateFoodPos();
@@ -66,6 +81,7 @@ void Map::update(sf::Time&& elapsed) {
 				m_snake->die();
 			}
 		}
+
 	}
 }
 
@@ -124,11 +140,16 @@ void Map::draw(sf::RenderWindow& window) const {
 		window.draw(rect);
 	}
 
+	m_saw.draw(window);
 	m_snake->draw(window);
 	m_food->draw(window);
 
 	for (auto& wall : m_walls) {
 		wall.draw(window);
+	}
+
+	for(auto& portal : m_portals) {
+		portal.draw(window);
 	}
 }
 

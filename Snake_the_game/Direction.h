@@ -8,6 +8,7 @@
 class Direction {
 public:
 	using Dir = enum { UP, LEFT, DOWN, RIGHT };
+	static Direction from(const Point& beg, const Point& end) throw();
 public:
 	Direction(const Dir& d);
 	Direction& operator=(const Dir& d);

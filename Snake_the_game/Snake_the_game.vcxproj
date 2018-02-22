@@ -78,8 +78,8 @@
     <LibraryPath>G:\ThirdPartyLibs\lib\Release\SFML;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>G:\ThirdPartyLibs\include;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\ThirdPartyLibs\lib\Release\x64\SFML;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\ThirdPartyLibs\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\ThirdPartyLibs\lib\x64\Release\SFML;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -138,7 +138,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapObject.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Portal.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
+    <ClCompile Include="Saw.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
@@ -150,7 +152,9 @@
     <ClInclude Include="Interfaces.h" />
     <ClInclude Include="MapObject.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Portal.h" />
     <ClInclude Include="RandomGenerator.h" />
+    <ClInclude Include="Saw.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

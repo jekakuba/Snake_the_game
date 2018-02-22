@@ -12,6 +12,9 @@ namespace DrawConfig {
 	const sf::Color BACKGROUND_COLOR = sf::Color(120, 255, 120);
 	const sf::Color FOOD_COLOR = sf::Color(255, 0, 0, 255);
 	const sf::Color WALL_COLOR = sf::Color(90, 90, 90, 255);
+	const sf::Color PORTAL_COLOR = sf::Color::Blue;
+	const sf::Color SAW_COLOR = sf::Color::White;
+	const sf::Color SAW_PATH_COLOR = sf::Color::Black;
 
 	inline int to_viewport_coord(int c) { return c * SCALE; }
 }
