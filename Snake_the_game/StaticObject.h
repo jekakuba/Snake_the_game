@@ -4,13 +4,13 @@
 
 //abstract class of an object placed on a game grid
 
-class MapObject:
+class StaticObject:
 	public Drawable,
 	public Reactor
 {
 public:
-	MapObject();
-	MapObject(const Point& p);
+	StaticObject();
+	StaticObject(const Point& p);
 	Point pos;
 };
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MapObject.h"
+#include "StaticObject.h"
 
-class Portal : public MapObject {
+class Portal : public StaticObject {
 public:
 	Portal();
 	Portal(const Point& p);

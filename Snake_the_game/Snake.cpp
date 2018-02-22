@@ -3,7 +3,8 @@
 
 Snake::Snake(const Point& startPoint, const Direction::Dir startDir, int size)
 			 :m_dir(startDir),
-			  m_isAlive(true)
+			  m_isAlive(true),
+			  Updatable(sf::milliseconds(300))			 
 {
 	for (int i = 0; i < size; ++i) {
 		m_body.push_back(startPoint + m_dir.to_point().reversed() * i);
@@ -57,12 +58,11 @@ bool Snake::checkSelfCollision() const {
 	return false;
 }
 
-Snake::SnakeBody Snake::dissect(SnakeBody::const_iterator& position) {
+void Snake::dissect(SnakeBody::const_iterator& position) {
 	SnakeBody remains;
 
 	if (position == m_body.begin()) {
 		die();
-		return remains;
 	}
 	//dissection goes here
 	remains.splice(remains.begin(), m_body, position, m_body.end());
@@ -72,7 +72,7 @@ Snake::SnakeBody Snake::dissect(SnakeBody::const_iterator& position) {
 		remains.pop_front();
 	}
 
-	return remains;
+	m_remains = remains;
 }
 
 bool Snake::move() {
@@ -82,6 +82,7 @@ bool Snake::move() {
 		m_body.pop_back();
 		return true;
 	}
+	die();
 	return false;
 }
 
@@ -110,6 +111,17 @@ void Snake::setHeadY(int y) {
 	m_body.front().y(y);
 }
 
+bool Snake::isChopped() const
+{
+	return !m_remains.empty();
+}
+
+Snake::SnakeBody Snake::dropRemains() {
+	SnakeBody temp;
+	std::swap(temp, m_remains);
+	return temp;
+}
+
 bool Snake::keyPressed(const sf::Keyboard::Key& key) {
 	switch (key) {
 		case sf::Keyboard::W:
@@ -135,6 +147,14 @@ bool Snake::keyPressed(const sf::Keyboard::Key& key) {
 		default:
 			return false;
 	}
+}
+
+bool Snake::update(const sf::Time & deltaTime) {
+	if (updateTimer(deltaTime)) {
+		move();
+		return true;
+	}
+	return false;
 }
 
 bool Snake::reactOn(Reactor& r) {

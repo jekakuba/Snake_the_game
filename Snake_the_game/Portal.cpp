@@ -7,7 +7,7 @@ Portal::Portal() : m_exitPortal(nullptr) {
 
 }
 
-Portal::Portal(const Point& p) : MapObject(p), m_exitPortal(nullptr) {
+Portal::Portal(const Point& p) : StaticObject(p), m_exitPortal(nullptr) {
 
 }
 

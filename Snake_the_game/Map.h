@@ -5,7 +5,7 @@
 #include "Interfaces.h"
 #include "RandomGenerator.h"
 #include "Portal.h"
-#include "Saw.h"
+#include "CircularSaw.h"
 #include <SFML\System.hpp>
 #include <SFML\Window.hpp>
 #include <memory>
@@ -14,14 +14,17 @@
 //represents level
 //should be refactored
 
-class Map : public Drawable {
+class Map {
 	static constexpr unsigned int _GAME_UPDATE_RATE = 300; //ms
 	static constexpr unsigned int GAME_OVER_DELAY = 1000; //ms
 public:
-	Map(unsigned m_width, unsigned m_height);
+	//Map(unsigned width, unsigned height);
+	Map(sf::RenderWindow& window, unsigned width, unsigned height,
+		std::vector<std::unique_ptr<StaticObject>>&& mapObjects,
+		std::vector<std::unique_ptr<DynamicObject>>&& dynObjects);
 
-	void update(sf::Time&& elapsed);
-	virtual void draw(sf::RenderWindow& window) const override;
+	void update(const sf::Time& elapsed);
+	void draw() const;
 
 	void catchInput(const sf::Keyboard::Key&);
 
@@ -32,9 +35,9 @@ protected:
 private:
 	std::unique_ptr<Snake> m_snake;
 	std::unique_ptr<Food> m_food;
-	std::vector<Wall> m_walls;
-	std::vector<Portal> m_portals;
-	Saw m_saw;
+	std::vector<std::unique_ptr<StaticObject>> m_staticObjects;
+	std::vector<std::unique_ptr<DynamicObject>> m_dynamicObjects;
+	sf::RenderWindow& m_window;
 
 	RandomGenerator m_rand;
 	sf::Time m_elapsedTime;

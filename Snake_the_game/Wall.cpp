@@ -2,7 +2,7 @@
 #include "Draw_config.h"
 #include "Snake.h"
 
-Wall::Wall(const Point& p) : MapObject(p) {}
+Wall::Wall(const Point& p) : StaticObject(p) {}
 
 void Wall::draw(sf::RenderWindow& window) const {
 	sf::RectangleShape rect(sf::Vector2f(DrawConfig::SCALE, DrawConfig::SCALE));

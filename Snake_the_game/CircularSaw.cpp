@@ -1,21 +1,30 @@
-#include "Saw.h"
+#include "CircularSaw.h"
 #include "Draw_config.h"
 #include "Snake.h"
 
 #include <iostream>
 
 
-Saw::Saw(const Point& from, const Point&to, Map& m) 
-	: MapObject(from),
+CircularSaw::CircularSaw(const Point& from, const Point&to, const sf::Time& speed)
+	: DynamicObject(speed, from),
 	  m_from(from),
 	  m_to(to),
-	  m_direction(Direction::from(m_from, m_to)),
-	  m_map(m)
+	  m_direction(Direction::from(m_from, m_to))
 {
 	
 }
 
-bool Saw::move() {
+bool CircularSaw::update(const sf::Time & dt)
+{
+	if (updateTimer(dt)) {
+		move();
+		return true;
+	}
+
+	return false;
+}
+
+bool CircularSaw::move() {
 	if(pos == m_to) {
 		std::swap(m_from, m_to);
 		m_direction = Direction::from(m_from, m_to);
@@ -26,7 +35,7 @@ bool Saw::move() {
 	return true;
 }
 
-void Saw::draw(sf::RenderWindow& window) const {
+void CircularSaw::draw(sf::RenderWindow& window) const {
 
 	sf::RectangleShape rect(sf::Vector2f(DrawConfig::SCALE, DrawConfig::SCALE));
 	rect.setFillColor(DrawConfig::SAW_PATH_COLOR);
@@ -49,7 +58,7 @@ void Saw::draw(sf::RenderWindow& window) const {
 	window.draw(rect);
 }
 
-bool Saw::affect(Snake& s) {
+bool CircularSaw::affect(Snake& s) {
 	if(s.nextHeadPos() == pos) {
 		s.die();
 		return true;

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "MapObject.h"
+#include "StaticObject.h"
 
-class Wall : public MapObject {
+class Wall : public StaticObject {
 public:
 	Wall() = default;
 	Wall(const Point& p);

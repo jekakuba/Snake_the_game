@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6B8FD353-21CF-412B-9B50-A3D392B5998A}</ProjectGuid>
     <RootNamespace>Snakethegame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -47,7 +47,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -78,8 +78,8 @@
     <LibraryPath>G:\ThirdPartyLibs\lib\Release\SFML;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>D:\ThirdPartyLibs\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\ThirdPartyLibs\lib\x64\Release\SFML;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Projects_cpp\ThirdParty\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Projects_cpp\ThirdParty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -133,29 +133,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Direction.cpp" />
+    <ClCompile Include="DynamicObject.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MapObject.cpp" />
+    <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="RandomGenerator.cpp" />
-    <ClCompile Include="Saw.cpp" />
+    <ClCompile Include="CircularSaw.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Updatable.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Direction.h" />
     <ClInclude Include="Draw_config.h" />
+    <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="Food.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Interfaces.h" />
-    <ClInclude Include="MapObject.h" />
+    <ClInclude Include="StaticObject.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="RandomGenerator.h" />
-    <ClInclude Include="Saw.h" />
+    <ClInclude Include="CircularSaw.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="Updatable.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

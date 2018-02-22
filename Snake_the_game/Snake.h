@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Updatable.h"
 #include "Point.h"
 #include "Direction.h"
 #include "Interfaces.h"
@@ -14,7 +15,8 @@ class Snake:
 	public Drawable, 
 	public Controllable,
 	public Movable,
-	public Reactable
+	public Reactable,
+	public Updatable
 {
 public:
 	using SnakeBody = std::list<Point>;
@@ -44,11 +46,14 @@ public:
 	void setHeadX(int x);
 	void setHeadY(int y);
 
+	bool isChopped() const;
+	SnakeBody dropRemains();
+
 	//dissects snake by deleting block at specified position 
 	//and disconnecting it's tail at that position
-	//returns disconnected part
+	//stores disconnected part 
 	//if position == head snake just dies
-	SnakeBody dissect(SnakeBody::const_iterator& position);
+	void dissect(SnakeBody::const_iterator& position);
 public: //reactable implementation
 	virtual bool reactOn(Reactor&) override;
 public: //movable implementation
@@ -57,14 +62,18 @@ public: //drawable implementation
 	virtual void draw(sf::RenderWindow& window) const override;
 public: //controllable implementation
 	virtual bool keyPressed(const sf::Keyboard::Key&) override;
-
+public:
+	virtual bool update(const sf::Time& deltaTime) override;
 protected:
 	//checks if snake's next head position coolides body
 	bool checkSelfCollision() const;
 private:
-	std::list<Point> m_body;
+	SnakeBody m_body;
+	SnakeBody m_remains;
+	
 	Direction m_dir;
 	Point m_tail;
+	
 	bool m_isAlive;
 };
 

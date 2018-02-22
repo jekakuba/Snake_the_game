@@ -2,6 +2,10 @@
 #include "Draw_config.h"
 #include "Snake.h"
 
+Food::Food(const Point& p) : StaticObject(p) {
+
+}
+
 void Food::draw(sf::RenderWindow& window) const {
 	sf::RectangleShape rect(sf::Vector2f(DrawConfig::SCALE, DrawConfig::SCALE));
 	rect.setFillColor(DrawConfig::FOOD_COLOR);

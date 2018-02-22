@@ -1,8 +1,10 @@
 #pragma once
 
-#include "MapObject.h"
+#include "StaticObject.h"
 
-class Food : public MapObject {
+class Food : public StaticObject {
+public:
+	Food(const Point& p = Point::NO_POINT);
 public: //Drawable implementation
 	virtual void draw(sf::RenderWindow& window) const override;
 public: //Reactor implementation
