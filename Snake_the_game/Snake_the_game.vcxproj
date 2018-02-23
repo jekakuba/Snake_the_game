@@ -81,6 +81,10 @@
     <IncludePath>E:\Projects_cpp\ThirdParty\include;$(IncludePath)</IncludePath>
     <LibraryPath>E:\Projects_cpp\ThirdParty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>E:\Projects_cpp\ThirdParty\include\SFML;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\Projects_cpp\ThirdParty\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -99,6 +103,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>sfml-audio.lib;sfml-graphics.lib;sfml-main.lib;sfml-network.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +144,8 @@
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapEditor.cpp" />
+    <ClCompile Include="Module.cpp" />
     <ClCompile Include="StaticObject.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Portal.cpp" />
@@ -153,6 +162,8 @@
     <ClInclude Include="Food.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Interfaces.h" />
+    <ClInclude Include="MapEditor.h" />
+    <ClInclude Include="Module.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Portal.h" />

@@ -55,6 +55,15 @@
     <Filter Include="GameObjects\CircularSaw">
       <UniqueIdentifier>{218b9ad0-2a9f-47f5-8ccc-8474c515b940}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Modules\MapEditor">
+      <UniqueIdentifier>{63cae477-7fe8-4883-b2fc-0df0745eb39a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Map">
+      <UniqueIdentifier>{6633642b-bfd1-420d-ac0b-798044135f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EditorObjects">
+      <UniqueIdentifier>{e05ba865-d2c6-4262-a5ac-7999fc2eabe6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Point.cpp">
@@ -78,9 +87,6 @@
     <ClCompile Include="Wall.cpp">
       <Filter>GameObjects\Wall</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="Portal.cpp">
       <Filter>GameObjects\Portal</Filter>
     </ClCompile>
@@ -95,6 +101,15 @@
     </ClCompile>
     <ClCompile Include="CircularSaw.cpp">
       <Filter>GameObjects\CircularSaw</Filter>
+    </ClCompile>
+    <ClCompile Include="MapEditor.cpp">
+      <Filter>Modules\MapEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Modules\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Module.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +137,6 @@
     <ClInclude Include="Wall.h">
       <Filter>GameObjects\Wall</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="Portal.h">
       <Filter>GameObjects\Portal</Filter>
     </ClInclude>
@@ -139,6 +151,15 @@
     </ClInclude>
     <ClInclude Include="CircularSaw.h">
       <Filter>GameObjects\CircularSaw</Filter>
+    </ClInclude>
+    <ClInclude Include="MapEditor.h">
+      <Filter>Modules\MapEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Modules\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

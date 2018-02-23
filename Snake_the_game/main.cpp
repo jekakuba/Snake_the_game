@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "MapEditor.h"
 #include "Draw_config.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -47,12 +48,14 @@ std::vector<std::unique_ptr<DynamicObject>> generateDynObjectsLevel1() {
 
 	return ret;
 }
+
 int main() {
 	
 	sf::RenderWindow window(sf::VideoMode(640, 480), "Snake game", sf::Style::Close);
-	Map game(window, 32, 24, generateLevel1(32, 24), generateDynObjectsLevel1());
-
 	sf::Clock clock;
+
+	//std::unique_ptr<Module> module(new Map(window, 32, 24, generateLevel1(32, 24), generateDynObjectsLevel1()));
+	std::unique_ptr<Module> module(new MapEditor(window, 32, 24));
 
 	window.setVerticalSyncEnabled(true);
 
@@ -60,19 +63,16 @@ int main() {
 		sf::Event event;
 		sf::Time dt = clock.restart();
 
-		game.update(std::move(dt));
+		module->update(std::move(dt));
 
 		while (window.pollEvent(event)) {
-			
 			if (event.type == sf::Event::Closed)
 				window.close();
-			else if (event.type == sf::Event::KeyPressed) {
-				game.catchInput(event.key.code);
-			}
+			module->handleInputEvent(event);
 		}
 
 		window.clear(DrawConfig::BACKGROUND_COLOR);
-		game.draw();
+		module->draw();
 		window.display();
 	}
 

@@ -8,12 +8,9 @@ Map::Map(sf::RenderWindow& window, unsigned width, unsigned height,
 	std::vector<std::unique_ptr<StaticObject>>&& mapObjects,
 	std::vector<std::unique_ptr<DynamicObject>>&& dynObjects)
 	:m_elapsedTime(sf::Time::Zero),
-	 m_width(width),
-	 m_height(height),
 	 m_staticObjects(std::move(mapObjects)),
 	 m_dynamicObjects(std::move(dynObjects)),
-	 m_window(window)
-
+	 Module(window, width, height)
 {
 	load();
 }
@@ -24,8 +21,42 @@ void Map::load() {
 	m_food->pos = generateFoodPos();
 }
 
-void Map::update(const sf::Time& elapsed) {
-	
+bool Map::reflectSnake() {
+	if (m_snake->nextHeadPos().x() < 0
+	|| m_snake->nextHeadPos().x() >= m_width
+	|| m_snake->nextHeadPos().y() < 0
+	|| m_snake->nextHeadPos().y() >= m_height) {
+		m_snake->die();
+		return false;
+	}
+
+	return true;
+}
+
+void Map::draw()
+{
+	if (!m_snake->isAlive()) {
+		sf::RectangleShape rect(sf::Vector2f(DrawConfig::to_viewport_coord(m_width),
+			DrawConfig::to_viewport_coord(m_height))
+		);
+		rect.setFillColor(sf::Color(255, 0, 0, 180));
+		m_window.draw(rect);
+	}
+
+	for (auto& object : m_staticObjects) {
+		object->draw(m_window);
+	}
+
+	for (auto& object : m_dynamicObjects) {
+		object->draw(m_window);
+	}
+
+	m_snake->draw(m_window);
+	m_food->draw(m_window);
+}
+
+void Map::update(const sf::Time& elapsed)
+{
 	if (!m_snake->isAlive()) {
 		sf::sleep(sf::microseconds(GAME_OVER_DELAY));
 		load();
@@ -45,12 +76,12 @@ void Map::update(const sf::Time& elapsed) {
 			m_snake->move();
 		}
 
-		draw();
+		//draw();
 	}
 
 	for (auto& object : m_dynamicObjects) {
 		if (object->update(elapsed)) {
-			
+
 			m_snake->reactOn(*object);
 
 			if (m_snake->isChopped()) {
@@ -59,12 +90,9 @@ void Map::update(const sf::Time& elapsed) {
 					m_staticObjects.push_back(std::unique_ptr<Food>(new Food(obj)));
 				}
 			}
-
-			draw();
-
+			//draw();
 		}
 	}
-
 }
 
 void Map::catchInput(const sf::Keyboard::Key& k) {
@@ -73,16 +101,11 @@ void Map::catchInput(const sf::Keyboard::Key& k) {
 	}
 }
 
-bool Map::reflectSnake() {
-	if (m_snake->nextHeadPos().x() < 0
-	|| m_snake->nextHeadPos().x() >= m_width
-	|| m_snake->nextHeadPos().y() < 0
-	|| m_snake->nextHeadPos().y() >= m_height) {
-		m_snake->die();
-		return false;
+void Map::handleInputEvent(sf::Event& event)
+{
+	if (event.type == sf::Event::KeyPressed) {
+		catchInput(event.key.code);
 	}
-
-	return true;
 }
 
 Point Map::generateFoodPos() {
@@ -110,27 +133,5 @@ Point Map::generateFoodPos() {
 	} while (noCollisions == false);
 
 	return foodPos;
-}
-
-void Map::draw() const {
-	if (!m_snake->isAlive()) {
-		sf::RectangleShape rect(sf::Vector2f(DrawConfig::to_viewport_coord(m_width),
-										DrawConfig::to_viewport_coord(m_height))
-		);
-
-		rect.setFillColor(sf::Color(255, 0, 0, 180));
-		m_window.draw(rect);
-	}
-
-	for (auto& object : m_staticObjects) {
-		object->draw(m_window);
-	}
-	
-	for (auto& object : m_dynamicObjects) {
-		object->draw(m_window);
-	}
-	
-	m_snake->draw(m_window);
-	m_food->draw(m_window);
 }
 

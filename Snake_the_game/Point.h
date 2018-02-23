@@ -20,6 +20,11 @@ public:
 	bool operator==(const Point& p) const;
 	bool operator!=(const Point& p) const;
 
+	bool operator<(const Point& p) const
+	{
+		return (p.m_x < m_x || p.m_y < m_y);
+	}
+
 	//Returns point multiplied by -1
 	Point reversed() const;
 
